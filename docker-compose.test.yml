@@ -1,0 +1,31 @@
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "${DB_PORT}:5432"
+
+  redis:
+    image: redis:7
+    ports:
+      - "${CACHE_PORT}:6379"
+
+  api:
+    build: .
+    command: >
+      sh -c "until pg_isready -h ${DB_HOST} -p ${DB_PORT}; do
+          echo 'Waiting for Postgres...';
+          sleep 1;
+        done &&
+        python manage.py migrate &&
+        pytest --reuse-db"
+    environment:
+      - DJANGO_SETTINGS_MODULE=book_mgmt.settings
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+      - redis

@@ -147,20 +147,8 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'formatter': 'verbose',
         },
-        'file': {
-            'class': 'logging.FileHandler',
-            'filename': 'google_books.log',
-            'formatter': 'verbose',
-        },
     },
     'loggers': {
-        # Log only your service (optional: adjust module path)
-        'books.services': {
-            'handlers': ['console', 'file'],
-            'level': 'INFO',
-            'propagate': False,
-        },
-        # Or log everything
         '': {
             'handlers': ['console'],
             'level': 'INFO',
@@ -170,10 +158,11 @@ LOGGING = {
 
 CACHES = {
     "default": {
-        "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": f"redis://{config('REDIS_HOST', default='redis')}:{config('REDIS_PORT', default=6379)}/1",
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": f"redis://{config('REDIS_HOST', default='redis')}:{config('REDIS_PORT', default='6379')}/0",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
     }
 }
+

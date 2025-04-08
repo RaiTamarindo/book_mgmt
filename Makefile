@@ -36,6 +36,9 @@ run:
 stop:
 	$(DOCKER_COMPOSE) -f $(COMPOSE_FILE) down --volumes --remove-orphans
 
+test:
+	$(DOCKER_COMPOSE) -f docker-compose.test.yml up --build
+
 logs:
 	$(DOCKER_COMPOSE) -f $(COMPOSE_FILE) logs -f
 
