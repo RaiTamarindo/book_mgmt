@@ -6,8 +6,8 @@ class Book(models.Model):
     isbn = models.CharField(max_length=13, unique=True)
     description = models.TextField()
     published_date = models.DateField()
-    pages = models.PositiveIntegerField(blank=True)
-    language = models.CharField(max_length=100, blank=True)
+    pages = models.PositiveIntegerField(null=True, blank=True)
+    language = models.CharField(max_length=100, null=True, blank=True)
 
     def __str__(self) -> str:
         return f"{self.title} by {self.author}"

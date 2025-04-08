@@ -30,11 +30,14 @@ test:
 clean:
 	rm -rf $(VENV) **/__pycache__ **/*.pyc
 
-up:
+run:
 	$(DOCKER_COMPOSE) -f $(COMPOSE_FILE) up --build -d
 
-down:
+stop:
 	$(DOCKER_COMPOSE) -f $(COMPOSE_FILE) down --volumes --remove-orphans
 
 logs:
 	$(DOCKER_COMPOSE) -f $(COMPOSE_FILE) logs -f
+
+migrations:
+	$(VENV)/bin/python manage.py makemigrations
