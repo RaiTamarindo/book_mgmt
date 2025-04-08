@@ -9,5 +9,5 @@ class Book(models.Model):
     pages = models.PositiveIntegerField(blank=True)
     language = models.CharField(max_length=100, blank=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.title} by {self.author}"

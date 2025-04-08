@@ -38,6 +38,3 @@ down:
 
 logs:
 	$(DOCKER_COMPOSE) -f $(COMPOSE_FILE) logs -f
-
-migrate:
-	$(DOCKER_COMPOSE) -f $(COMPOSE_FILE) exec $(API_SERVICE) python src/cmd/api/manage.py migrate
