@@ -21,6 +21,31 @@ git clone https://github.com/RaiTamarindo/book_mgmt.git
 cd book_mgmt
 ```
 
+### ⚙️ Environment Configuration
+
+Create a `.env` file in the root directory with the following content:
+
+\`\`\`env
+API_PORT=8000
+
+DB_NAME=book_mgmt_db
+DB_USER=book_user
+DB_PASSWORD=book_pass
+DB_PORT=5432
+DB_HOST=postgres
+
+CACHE_PORT=6379
+CACHE_TTL_SECONDS=86400
+
+DJANGO_SUPERUSER_USERNAME=admin
+DJANGO_SUPERUSER_EMAIL=admin@example.com
+DJANGO_SUPERUSER_PASSWORD=admin
+
+GOOGLE_BOOKS_API_KEY=
+\`\`\`
+
+> 💡 The \`GOOGLE_BOOKS_API_KEY\` can be left empty for testing purposes. Providing a key will increase your rate limits and avoid quota issues.
+
 ### 📦 Makefile Commands
 
 | Command           | Description                                           |
