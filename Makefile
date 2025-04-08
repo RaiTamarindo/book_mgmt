@@ -9,13 +9,13 @@ API_SERVICE := api  # Name of your API service in docker-compose.yml
 
 help:
 	@echo "Available commands:"
-	@echo "  make setup   - Create and activate the virtual environment, install dependencies"
-	@echo "  make test    - Run tests using pytest"
-	@echo "  make clean   - Remove the virtual environment and __pycache__ files"
-	@echo "  make up      - Build and start Docker containers"
-	@echo "  make down    - Stop and remove Docker containers"
-	@echo "  make logs    - Tail the logs of the Docker containers"
-	@echo "  make migrate - Apply database migrations in the Docker 'api' service"
+	@echo "  make setup      - Create and activate the virtual environment, install dependencies"
+	@echo "  make test       - Run tests using pytest"
+	@echo "  make clean      - Remove the virtual environment and __pycache__ files"
+	@echo "  make run        - Build and start Docker containers"
+	@echo "  make stop       - Stop and remove Docker containers"
+	@echo "  make logs       - Tail the logs of the Docker containers"
+	@echo "  make migrations - Generate database migrations from the models
 
 $(VENV)/bin/activate: requirements.txt
 	$(PYTHON) -m venv $(VENV)
